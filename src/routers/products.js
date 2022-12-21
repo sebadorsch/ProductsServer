@@ -7,7 +7,7 @@ const productManager = new ProductManager('src/models/Products.json')
 
 productsRouter.get('/', (req, res) => {
   try{
-    const { limit } = req.query || 10
+    const { limit } = req.query
     if(limit){
       res.status(200).json(productManager.getProducts().slice(0, limit));
     }
