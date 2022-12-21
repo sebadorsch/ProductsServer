@@ -28,7 +28,6 @@ productsRouter.get('/:id', (req, res) => {
   catch (error){
     res.status(500).json("error")
   }
-
 })
 
 productsRouter.post('/', (req, res) => {

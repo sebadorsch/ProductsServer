@@ -11,7 +11,7 @@ app.get('/', (req, res)=>{
 
 
 const productsRouter = require('./routers/products');
-app.use('/api/products', productsRouter);
+app.use('/products', productsRouter);
 
 
 app.listen(PORT, ()=>{
