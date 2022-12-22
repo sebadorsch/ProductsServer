@@ -1,5 +1,5 @@
-const express = require('express');
-const productsRouter = express.Router();
+const express = require('express')
+const productsRouter = express.Router()
 productsRouter.use(express.json())
 const ProductManager = require('../models/ProductManager')
 
@@ -18,7 +18,6 @@ productsRouter.get('/', (req, res) => {
   catch (error){
     res.status(500).json("error")
   }
-
 });
 
 productsRouter.get('/:id', (req, res) => {

@@ -11,7 +11,10 @@ app.get('/', (req, res)=>{
 
 
 const productsRouter = require('./routers/products');
-app.use('/products', productsRouter);
+const cartsRouter = require('./routers/carts');
+
+app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
 
 
 app.listen(PORT, ()=>{
