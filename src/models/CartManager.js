@@ -19,13 +19,16 @@ class CartManager {
         ? this.carts = JSON.parse(fs.readFileSync(this.path, 'utf-8'))
         : this.carts = []
 
-      const cart = {products: products}
+      const cart = {}
 
       cart["id"] = this.carts.length !== 0
         ? this.carts[this.carts.length - 1]["id"] + 1
         : 1
 
-      console.log(cart)
+      cart.products = products.length ? products : [products]
+
+      this.carts.push(cart);
+      fs.writeFileSync(this.path, JSON.stringify(this.carts, null, '\t'))
     }
     catch(error){
       return error
@@ -36,6 +39,15 @@ class CartManager {
     return this.carts
   }
 
+  getCartById(id){
+    try{
+      return JSON.parse(fs.readFileSync(this.path, 'utf-8'))
+        .find(e => e.id === id) || "Error: Not found"
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
 }
 
 module.exports = CartManager

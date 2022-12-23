@@ -20,6 +20,15 @@ cartsRouter.get('/', (req, res) => {
   }
 });
 
+cartsRouter.get('/:id', (req, res) => {
+  try{
+    res.status(200).json(cartManager.getCartById(parseInt(req.params.id)));
+  }
+  catch (error){
+    res.status(500).json("error")
+  }
+})
+
 cartsRouter.post('/', (req, res) => {
   try{
     const products = req.body

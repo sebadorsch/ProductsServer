@@ -1,1 +1,45 @@
-[]
+[
+	{
+		"id": 1,
+		"products": [
+			{
+				"title": "producto prueba",
+				"description": "Este es otro producto prueba",
+				"price": 200,
+				"thumbnail": "Sin imagen",
+				"code": "abdgcaa1asdrca167111189",
+				"stock": 25,
+				"status": true,
+				"category": "food",
+				"id": 12
+			}
+		]
+	},
+	{
+		"id": 2,
+		"products": [
+			{
+				"title": "producto prueba",
+				"description": "Este es otro producto prueba",
+				"price": 200,
+				"thumbnail": "Sin imagen",
+				"code": "abdgcaa1asdrca1671189",
+				"stock": 25,
+				"status": true,
+				"category": "food",
+				"id": 11
+			},
+			{
+				"title": "producto prueba",
+				"description": "Este es otro producto prueba",
+				"price": 200,
+				"thumbnail": "Sin imagen",
+				"code": "abdgcaa1asdrca167111189",
+				"stock": 25,
+				"status": true,
+				"category": "food",
+				"id": 12
+			}
+		]
+	}
+]
