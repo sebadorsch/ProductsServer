@@ -30,6 +30,8 @@ class CartManager {
 
       this.carts.push(cart);
       fs.writeFileSync(this.path, JSON.stringify(this.carts, null, '\t'))
+
+      return cart
     }
     catch(error){
       return error

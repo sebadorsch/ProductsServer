@@ -30,7 +30,10 @@ cartsRouter.get('/:id', (req, res) => {
 
 cartsRouter.post('/', (req, res) => {
   try{
-    res.status(200).send(JSON.stringify(cartManager.addCart()))
+    const cart = cartManager.addCart()
+    cart
+      ? res.status(200).send(cart)
+      : res.status(400).send(JSON.stringify("Bad request"))
   }
   catch (error){
     res.status(500).json("error")

@@ -41,7 +41,10 @@ productsRouter.post('/', (req, res) => {
 
 productsRouter.put('/:id', (req, res) => {
   try{
-    res.status(200).send(JSON.stringify(productManager.updateProduct(req.params.id, req.body)))
+    const updateProduct = productManager.updateProduct(req.params.id, req.body)
+    updateProduct
+      ? res.status(200).send(updateProduct)
+      : res.status(400).send("Bad request")
   }
   catch (error){
     res.status(500).json("error")

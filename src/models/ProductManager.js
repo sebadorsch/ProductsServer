@@ -56,21 +56,19 @@ class ProductManager {
     try{
       id = parseInt(id)
       if(!id || !this.products.find(e => e.id === id))
-        return "Error: id not found"
+        return undefined
       else if (Object.keys(obj).some(value => {return ['id'].includes(value)}))
-        return "Error: Not Allowed to change id or code values"
+        return undefined
       else{
         let updatedProduct = this.products.find(e => e.id === id)
-        Object.keys(obj).map(key=> {
-          return updatedProduct[key] = obj[key]
-        })
+
+        Object.keys(obj).map(key => updatedProduct[key] = obj[key])
 
         this.products = this.products.filter(e => e.id !== id)
-
         this.products.push(updatedProduct)
 
         fs.writeFileSync(this.path, JSON.stringify(this.products, null, '\t'))
-        return "Product updated successfully!"
+        return updatedProduct
       }
     }
     catch(error){
