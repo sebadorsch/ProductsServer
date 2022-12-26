@@ -8,7 +8,7 @@
 			},
 			{
 				"id": 2,
-				"quantity": 2
+				"quantity": 5
 			},
 			{
 				"id": 12,
@@ -16,7 +16,11 @@
 			},
 			{
 				"id": 11,
-				"quantity": 3
+				"quantity": 7
+			},
+			{
+				"id": 3,
+				"quantity": 2
 			}
 		]
 	}

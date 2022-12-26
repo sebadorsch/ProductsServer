@@ -63,13 +63,9 @@ class CartManager {
 
       const productIndex = this.carts[cartIndex].products.map(product => product.id ).indexOf(pid)
 
-      if (productIndex === -1)
-        this.carts[cartIndex].products.push({
-          id: pid,
-          quantity: 1
-        })
-      else
-        this.carts[cartIndex].products[productIndex].quantity += 1
+      productIndex === -1
+        ? this.carts[cartIndex].products.push({id: pid, quantity: 1})
+        : this.carts[cartIndex].products[productIndex].quantity += 1
 
       fs.writeFileSync(this.path, JSON.stringify(this.carts, null, '\t'))
       return this.carts[cartIndex]
