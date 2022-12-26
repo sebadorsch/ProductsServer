@@ -2,8 +2,7 @@ const express = require('express')
 const cartsRouter = express.Router()
 cartsRouter.use(express.json())
 const CartManager = require('../models/CartManager')
-
-const cartManager = new CartManager('src/models/Carts.json')
+const cartManager = new CartManager(process.env.CARTS_URL)
 
 cartsRouter.get('/', (req, res) => {
   try{
@@ -31,12 +30,24 @@ cartsRouter.get('/:id', (req, res) => {
 
 cartsRouter.post('/', (req, res) => {
   try{
-    const products = req.body
-    res.status(200).send(JSON.stringify(cartManager.addCart(products)))
+    res.status(200).send(JSON.stringify(cartManager.addCart()))
   }
   catch (error){
     res.status(500).json("error")
   }
 })
+
+cartsRouter.post('/:cid/product/:pid', (req, res) => {
+  try{
+    const addProduct = cartManager.addProduct(parseInt(req.params.cid), parseInt(req.params.pid))
+    addProduct
+      ? res.status(200).send(addProduct)
+      : res.status(400).send('Bad request')
+  }
+  catch (error){
+    res.status(500).json("Error")
+  }
+})
+
 
 module.exports = cartsRouter

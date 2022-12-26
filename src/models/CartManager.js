@@ -1,4 +1,5 @@
 const fs = require('fs')
+const ProductManager = require("./ProductManager");
 
 class CartManager {
 
@@ -13,7 +14,7 @@ class CartManager {
     }
   }
 
-  addCart(products){
+  addCart(){
     try{
       fs.existsSync(this.path)
         ? this.carts = JSON.parse(fs.readFileSync(this.path, 'utf-8'))
@@ -25,7 +26,7 @@ class CartManager {
         ? this.carts[this.carts.length - 1]["id"] + 1
         : 1
 
-      cart.products = products.length ? products : [products]
+      cart.products = []
 
       this.carts.push(cart);
       fs.writeFileSync(this.path, JSON.stringify(this.carts, null, '\t'))
@@ -41,13 +42,43 @@ class CartManager {
 
   getCartById(id){
     try{
-      return JSON.parse(fs.readFileSync(this.path, 'utf-8'))
-        .find(e => e.id === id) || "Error: Not found"
+      const cart = JSON.parse(fs.readFileSync(this.path, 'utf-8')).find(e => e.id === id)
+      if (cart)
+        return cart.products
+      else
+        return "Error: Not found"
     }
     catch (error){
       console.log(error)
     }
   }
+
+  addProduct(cid, pid){
+    try{
+      const cartIndex = this.carts.map(x => x.id ).indexOf(cid);
+      const productManager = new ProductManager(process.env.PRODUCTS_URL)
+
+      if(cartIndex === -1 || !productManager.getProductById(pid))
+        return undefined
+
+      const productIndex = this.carts[cartIndex].products.map(product => product.id ).indexOf(pid)
+
+      if (productIndex === -1)
+        this.carts[cartIndex].products.push({
+          id: pid,
+          quantity: 1
+        })
+      else
+        this.carts[cartIndex].products[productIndex].quantity += 1
+
+      fs.writeFileSync(this.path, JSON.stringify(this.carts, null, '\t'))
+      return this.carts[cartIndex]
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+
 }
 
 module.exports = CartManager

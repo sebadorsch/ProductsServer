@@ -45,7 +45,7 @@ class ProductManager {
   getProductById(id){
     try{
       return JSON.parse(fs.readFileSync(this.path, 'utf-8'))
-        .find(e => e.id === id) || "Error: Not found"
+        .find(e => e.id === parseInt(id)) || undefined
     }
     catch (error){
       console.log(error)
@@ -61,7 +61,6 @@ class ProductManager {
         return "Error: Not Allowed to change id or code values"
       else{
         let updatedProduct = this.products.find(e => e.id === id)
-        console.log(updatedProduct)
         Object.keys(obj).map(key=> {
           return updatedProduct[key] = obj[key]
         })
