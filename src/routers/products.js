@@ -1,9 +1,10 @@
+const Constants = require('../Constants');
 const express = require('express')
 const productsRouter = express.Router()
 productsRouter.use(express.json())
 const ProductManager = require('../models/ProductManager')
 
-const productManager = new ProductManager('src/models/Products.json')
+const productManager = new ProductManager(Constants.productsUrl)
 
 productsRouter.get('/', (req, res) => {
   try{

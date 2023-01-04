@@ -1,3 +1,4 @@
+const Constants = require('../Constants');
 const fs = require('fs')
 const ProductManager = require("./ProductManager");
 
@@ -58,7 +59,7 @@ class CartManager {
   addProduct(cid, pid){
     try{
       const cartIndex = this.carts.map(x => x.id ).indexOf(cid);
-      const productManager = new ProductManager(process.env.PRODUCTS_URL)
+      const productManager = new ProductManager(Constants.productsUrl)
 
       if(cartIndex === -1 || !productManager.getProductById(pid))
         return undefined

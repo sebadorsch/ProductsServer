@@ -1,8 +1,9 @@
+const Constants = require('../Constants');
 const express = require('express')
 const cartsRouter = express.Router()
 cartsRouter.use(express.json())
 const CartManager = require('../models/CartManager')
-const cartManager = new CartManager(process.env.CARTS_URL)
+const cartManager = new CartManager(Constants.cartsUrl)
 
 cartsRouter.get('/', (req, res) => {
   try{
