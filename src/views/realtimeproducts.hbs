@@ -1,0 +1,48 @@
+<div class="container"
+     style="width: 50%;
+     margin-right: auto;
+     margin-left: auto;
+">
+  <form style="display: grid; font-size: 20px">
+
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Title:</span><input type="text" id="title" placeholder="title" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Description:</span><input type="text" id="description" placeholder="description" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Price:</span><input type="number" id="price" placeholder="price" style="font-size: 20px; height: 100%; width: 100%" ></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Thumbnail:</span><input type="text" id="thumbnail" placeholder="thumbnail" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Code:</span><input type="text" id="code" placeholder="code" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Stock:</span><input type="number" id="stock" placeholder="stock" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem">Category:</span><input type="text" id="category" placeholder="category" style="font-size: 20px; height: 100%; width: 100%"></div>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem"><span style="margin-right: 0.5rem"> Status: True</span><input type="checkbox" id="status" value="true"></div>
+
+    <button id="send" style="
+          display: inline-block;
+          font-weight: 400;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          line-height: 1.5;
+          border-radius: 0.25rem;
+          transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+          cursor: pointer;
+          color: #fff;
+          background-color: #28a745;
+          border-color: #28a745;
+          writing-mode: horizontal-tb !important;
+          text-rendering: auto;
+          letter-spacing: normal;
+          word-spacing: normal;
+        ">Send</button>
+  </form>
+
+</div>
+
+<p></p>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
