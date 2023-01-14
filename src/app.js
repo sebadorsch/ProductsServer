@@ -54,8 +54,11 @@ io.on("connection", (socket) => {
       status: data.status
     }
     productManager.addProduct(product)
-    // console.log(productManager.addProduct(product))
     io.emit('total_products', productManager.getProducts())
+  })
+
+  socket.on('delete_product', (id) => {
+    productManager.deleteProduct(id)
   })
 
 })
